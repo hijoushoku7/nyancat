@@ -1,0 +1,10 @@
+services:
+  bot:
+    # Minecraftサーバーは既に別で稼働しているため、Botだけをビルドする。
+    build:
+      context: .
+    # 秘密情報をComposeファイルへ直接書かず、Git管理外の.envから渡す。
+    env_file:
+      - .env
+    # Ubuntu Server再起動後や予期しない終了後に、手動操作なしでBotを復帰させる。
+    restart: unless-stopped
