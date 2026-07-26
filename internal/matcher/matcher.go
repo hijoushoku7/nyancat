@@ -8,7 +8,6 @@ import (
 // Matcherは「Minecraftを表す語」と「問い合わせを表す語」を別々に管理する。
 // 2種類の語を両方要求することで、「今日マイクラやろう」や単なる「IP」の誤反応を減らす。
 type Matcher struct {
-	subjectTerms []string
 	queryTerms   []string
 }
 
@@ -16,38 +15,10 @@ type Matcher struct {
 // 現段階では編集頻度が低いため、設定ファイルや形態素解析を導入せずコード内の小さな辞書にする。
 func New() Matcher {
 	return Matcher{
-		subjectTerms: []string{
-			"マイクラ",
-			"minecraft",
-			"mc",
-			"鯖",
-			"サーバー",
-		},
 		queryTerms: []string{
 			"ip",
-			"ｉｐ",
-			"address",
-			"where",
-			"online",
-			"status",
-			"open",
-			"アドレス",
-			"接続先",
-			"どこ",
-			"オンライン",
-			"状態",
-			"状況",
-			"開いて",
-			"あいて",
-			"起動して",
-			"立って",
-			"たって",
-			"入れる",
-			"はいれる",
-			"動いて",
-			"うごいて",
-			"できる",
-		},
+			"鯖",
+		}
 	}
 }
 

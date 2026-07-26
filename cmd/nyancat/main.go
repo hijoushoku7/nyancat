@@ -69,14 +69,14 @@ func main() {
 	}
 
 	// DiscordのGateway接続やレート制限処理を自作せず、DiscordGoに任せる。
-	session, err := discordgo.New("Bot " + cfg.discordToken)
+	session, err := discordgo.New("Bot " + cfg.discordToken) //sessionを作成
 	if err != nil {
 		logger.Error("Discordセッションを作成できませんでした", "error", err)
 		os.Exit(1)
 	}
 	// 投稿本文だけを扱うBotなので、メンバー一覧など不要なIntentは要求しない。
 	session.Identify.Intents = discordgo.IntentsGuildMessages | discordgo.IntentsMessageContent
-	session.AddHandler(handler.onMessageCreate)
+	session.AddHandler(handler.onMessageCreate) //メッセージ受信時のハンドラ
 
 	if err := session.Open(); err != nil {
 		logger.Error("Discordへ接続できませんでした", "error", err)
